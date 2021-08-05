@@ -1,0 +1,22 @@
+08/04/21
+----------------------------------------------------------------------------
+
+Project - MYIOT
+
+Description: Project is practice at building a microservice architecture, and the subjetc is all about senors:
+* management of senors
+* collection/aggregation of sensor(s) data
+* reporting of sensor data.
+
+Step one:
+Laying a development foundation.
+* building a base development vm.
+- kubernetes
+- helm 
+- container work
+
+
+* exported a basebox here!! 
+vagrant package --output mynew.box
+
+config.vm.box = "file:///d:/projects/myiot/mynew.box"
