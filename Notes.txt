@@ -17,6 +17,18 @@ Laying a development foundation.
 
 
 * exported a basebox here!! 
-vagrant package --output mynew.box
+vagrant package --output mk8s-ubuntu-dev.box
+config.vm.box = "file:///d:/projects/myiot/mk8s-ubuntu-dev.box"
+----------------------------------------------------------------------------
+08/05/21
+To work with Jib and docker hub you need to create a credential store:
 
-config.vm.box = "file:///d:/projects/myiot/mynew.box"
+From a fresh install do the following:
+sudo apt-get install pass
+wget https://github.com/docker/docker-credential-helpers/releases/download/v0.6.0/docker-credential-pass-v0.6.0-amd64.tar.gz && tar -xf docker-credential-pass-v0.6.0-amd64.tar.gz && chmod +x docker-credential-pass && sudo mv docker-credential-pass /usr/local/bin/
+gpg2 --gen-key
+pass init <name> - I did pass init Gants
+sed -i '0,/{/s/{/{\n\t"credsStore": "pass",/' ~/.docker/config.json
+
+To build and push to docker hub.
+mvn clean package jib:build -DskipTests

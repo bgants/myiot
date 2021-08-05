@@ -1,0 +1,22 @@
+probes:
+  liveness:
+    enabled: false
+    type: httpGet
+    initialDelaySeconds: 60
+    periodSeconds: 5
+    timeoutSeconds: 5
+    failureThreshold: 3
+    path: /actuator/health/liveness
+  readiness:
+    enabled: false
+    type: httpGet
+    initialDelaySeconds: 60
+    periodSeconds: 5
+    timeoutSeconds: 5
+    failureThreshold: 3
+    path: /actuator/health/readiness
+
+replicaCount: 1
+
+serviceAccount:
+  create: false

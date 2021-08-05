@@ -7,7 +7,7 @@
     <parent>
         <artifactId>myiot</artifactId>
         <groupId>com.gants</groupId>
-        <version>0.0.1</version>
+        <version>0.2.snapshot</version>
     </parent>
 
     <artifactId>apps</artifactId>
