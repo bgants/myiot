@@ -8,3 +8,9 @@ dependencies:
   - name: sensor-service
     version: 0.1.0
     repository: file://../sensor-service
+  - name: postgress
+    version: 0.1.0
+    repository: file://../postgress
+  - name: activemq
+    version: 0.1.0
+    repository: file://../activemq

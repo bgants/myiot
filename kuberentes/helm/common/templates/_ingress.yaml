@@ -4,14 +4,16 @@
 {{- $overrides := dict "Values" $noCommon -}}
 {{- $noValues := omit . "Values" -}}
 {{- with merge $noValues $overrides $common -}}
-{{- if .Values.ingress.enabled -}}
+{{- $name := include "common.name" . -}}
+{{- $servicePort := .Values.service.port -}}
+{{- if .Values.ingress -}}
 apiVersion: networking.k8s.io/v1beta1
 {{- else -}}
 apiVersion: extensions/v1beta1
 {{- end }}
 kind: Ingress
 metadata:
-  name: {{ include "common.fullname" . }}
+  name: {{ $name }}
   labels:
     {{- include "common.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
@@ -37,9 +39,10 @@ spec:
         {{- range .paths }}
           - path: {{ . }}
             backend:
-              serviceName: sensor-service
-              servicePort: 8080
+              serviceName: myiot-{{ $name }}
+              servicePort: {{ $servicePort }}
         {{- end }}
   {{- end }}
 {{- end }}
 {{- end -}}
+

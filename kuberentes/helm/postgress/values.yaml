@@ -1,0 +1,21 @@
+image:
+  repository: bgants/postgress
+  name: postgress
+  pullPolicy: Always
+
+replicaCount:
+
+serviceAccount:
+  name: default
+
+env:
+  - name: "POSTGRES_PASSWORD"
+    value:  "password"
+
+service:
+  type: ClusterIP
+  name: postgress
+  port: 5432
+
+ingress:
+  enabled: false

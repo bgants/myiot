@@ -32,3 +32,8 @@ sed -i '0,/{/s/{/{\n\t"credsStore": "pass",/' ~/.docker/config.json
 
 To build and push to docker hub.
 mvn clean package jib:build -DskipTests
+
+08/07/21
+To create templates for debugging:
+
+helm template --output-dir /projects/charts/myiot/charts/ myiot myiot

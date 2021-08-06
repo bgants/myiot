@@ -1,0 +1,23 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:postgresql://myiot-postgress:5432/sensordb
+    username: sensor
+    password: password
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: create-drop
+    temp:
+      use_jdbc_metadata_defaults: false
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  activemq:
+    in-memory: false
+    broker-url: tcp://myiot-activemq:61616
+  jms:
+    pub-sub-domain: true

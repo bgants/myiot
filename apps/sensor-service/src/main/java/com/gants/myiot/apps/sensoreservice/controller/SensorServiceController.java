@@ -1,27 +1,25 @@
 package com.gants.myiot.apps.sensoreservice.controller;
 
 import com.gants.myiot.apps.sensoreservice.model.Sensor;
+import com.gants.myiot.apps.sensoreservice.service.SensorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/api")
 public class SensorServiceController {
-
-
-    private List<Sensor> sensorList = new ArrayList<>();
+    @Autowired
+    SensorService sensorService;
 
     @GetMapping("/sensor")
-    public List<Sensor> getSensors() {
-        return sensorList;
+    public Iterable<Sensor> getSensors() {
+        return sensorService.getSensors();
     }
 
     @PostMapping("/sensor/add")
     public void addSensor(@RequestBody Sensor body) {
         System.out.println(body);
-        sensorList.add(body);
+        sensorService.saveSensor(body);
     }
 }
