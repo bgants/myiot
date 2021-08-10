@@ -32,8 +32,17 @@ sed -i '0,/{/s/{/{\n\t"credsStore": "pass",/' ~/.docker/config.json
 
 To build and push to docker hub.
 mvn clean package jib:build -DskipTests
-
+----------------------------------------------------------------------------
 08/07/21
 To create templates for debugging:
 
 helm template --output-dir /projects/charts/myiot/charts/ myiot myiot
+----------------------------------------------------------------------------
+08/09/21
+To forward a port from your hot machine to a kubernetes pod, say activemq console on port 8161. Ensure your VagrantFile has the correct port forwarding verbiage.
+config.vm.network "forwarded_port", guest: 8161, host: 8161, host_ip: "127.0.0.1"
+
+Then on the VM once your pods have been deployed forward the port:
+kubectl port-forward svc/myiot-activemq 8161:8161 --address 0.0.0.0
+
+Note the --address 0.0.0.0 is critical !!!
