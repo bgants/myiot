@@ -11,7 +11,7 @@ do
     echo
   fi
 done    
-echo "Updating myiot dependecies in mpyiot/ ..."
+echo "Updating myiot dependecies in myiot/ ..."
 rm -rf myiot/charts
 helm dep up myiot
 echo

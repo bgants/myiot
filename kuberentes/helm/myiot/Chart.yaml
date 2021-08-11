@@ -4,13 +4,16 @@ description: A Helm chart for Kubernetes
 type: application
 version: 0.1.0
 appVersion: 0.1.0
-dependencies: 
-  - name: sensor-service
-    version: 0.1.0
-    repository: file://../sensor-service
+dependencies:
   - name: postgress
     version: 0.1.0
     repository: file://../postgress
   - name: activemq
     version: 0.1.0
     repository: file://../activemq
+  - name: sensor-service
+    version: 0.1.0
+    repository: file://../sensor-service
+  - name: processing-service
+    version: 0.1.0
+    repository: file://../processing-service

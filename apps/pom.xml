@@ -15,6 +15,7 @@
 
     <modules>
         <module>sensor-service</module>
+        <module>processing-service</module>
     </modules>
 
 </project>

@@ -1,0 +1,31 @@
+image:  
+  repository: bgants/processing-service
+  name: processing-service
+  pullPolicy: Always
+
+replicaCount: 1
+
+serviceAccount:
+  name: default
+
+probes:
+  liveness:
+    type: tcpSocket
+    initialDelaySeconds: 60
+    periodSeconds: 20
+    failureThreshold: 10
+    timeoutSeconds: 1
+  readiness:
+    type: tcpSocket
+    initialDelaySeconds: 60
+    periodSeconds: 20
+    failureThreshold: 10
+    timeoutSeconds: 1
+
+service:
+  type: ClusterIP
+  name: sensor-service
+  port: 8080
+
+ingress:
+  enabled: false
